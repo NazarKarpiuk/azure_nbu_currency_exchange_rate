@@ -1,0 +1,13 @@
+{
+	"name": "NBU_api",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "nbu_curr_api",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

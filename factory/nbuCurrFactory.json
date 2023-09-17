@@ -1,0 +1,9 @@
+{
+	"name": "nbuCurrFactory",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0af6d673-2cb5-4a45-a412-481bdaa49fa2",
+		"tenantId": "c9a4b6e8-b546-4e39-92a3-ace88545a419"
+	}
+}

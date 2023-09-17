@@ -1,0 +1,143 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "API_to_dataset",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['exchangedate']"
+								},
+								"sink": {
+									"name": "exchangedate"
+								}
+							},
+							{
+								"source": {
+									"path": "$['r030']"
+								},
+								"sink": {
+									"name": "r030"
+								}
+							},
+							{
+								"source": {
+									"path": "$['cc']"
+								},
+								"sink": {
+									"name": "cc"
+								}
+							},
+							{
+								"source": {
+									"path": "$['txt']"
+								},
+								"sink": {
+									"name": "txt"
+								}
+							},
+							{
+								"source": {
+									"path": "$['enname']"
+								},
+								"sink": {
+									"name": "enname"
+								}
+							},
+							{
+								"source": {
+									"path": "$['rate']"
+								},
+								"sink": {
+									"name": "rate"
+								}
+							},
+							{
+								"source": {
+									"path": "$['units']"
+								},
+								"sink": {
+									"name": "units"
+								}
+							},
+							{
+								"source": {
+									"path": "$['rate_per_unit']"
+								},
+								"sink": {
+									"name": "rate_per_unit"
+								}
+							},
+							{
+								"source": {
+									"path": "$['group']"
+								},
+								"sink": {
+									"name": "group"
+								}
+							},
+							{
+								"source": {
+									"path": "$['calcdate']"
+								},
+								"sink": {
+									"name": "calcdate"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "NBU_api",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DLake_storage",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-09-17T15:51:21Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

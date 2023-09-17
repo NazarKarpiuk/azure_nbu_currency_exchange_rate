@@ -1,0 +1,13 @@
+{
+	"name": "nbu_curr_api",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://bank.gov.ua/NBU_Exchange/exchange_site?start=20140101&end=20230101&valcode=usd&sort=exchangedate&order=desc&json",
+			"enableServerCertificateValidation": false,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
